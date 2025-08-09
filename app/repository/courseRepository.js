@@ -13,10 +13,13 @@ class CourseRepository{
         }
     }
     //Get all courses
-    async getCourses ()  {
+    async getCourses (courseId, page = 1, limit = 10)  {
         try{
-            const course= await Course.find();
-            return course
+            return await paginate(
+                Course,
+                { page: Number(page), limit: Number(limit), sort: { createdAt: -1 } }
+            );
+           
         }catch(error){
             throw error;
         }
