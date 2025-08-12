@@ -1,5 +1,5 @@
 const Assignment = require("../model/Assignment");
-const paginate = require("../utils/paginate");
+const paginate = require("../utils/pagination");
 
 class AssignmentRepository {
     // Create new assignment

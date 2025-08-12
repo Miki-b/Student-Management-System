@@ -3,8 +3,8 @@ const router = express.Router();
 const assignmentController = require("../controllers/assignmentController");
 const auth = require("../middleware/authMiddleware");
 const checkRole = require("../middleware/roleMiddleware");
-
-router.post("/assignments",  auth, checkRole('teacher'),assignmentController.createAssignment);
-router.get("/assignments/course:courseId", auth, checkRole('teacher', 'student'),assignmentController.getAssignments);
+const {createAssignmentValidator,getAssignmentsByCourseValidator}=require("../validators/assignmentValidator")
+router.post("/",  auth, checkRole('teacher'),createAssignmentValidator, assignmentController.createAssignment);
+router.get("/course/:courseId", auth, checkRole('teacher', 'student'),getAssignmentsByCourseValidator,assignmentController.getAssignmentsByCourseId);
 
 module.exports = router;

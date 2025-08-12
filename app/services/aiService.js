@@ -35,4 +35,4 @@ class AIService {
   }
 }
 
-export default new AIService();
+module.exports ={generateLessonPlan};

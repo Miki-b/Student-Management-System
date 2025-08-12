@@ -1,7 +1,7 @@
 import aiService from "../services/aiService.js";
 
-class AIController {
-  async generateLessonPlan(req, res) {
+
+exports.generateLessonPlan= async (req, res,next)=> {
     try {
       const data = await aiService.createLessonPlan(req.body);
 
@@ -11,12 +11,8 @@ class AIController {
         data,
       });
     } catch (error) {
-      res.status(400).json({
-        success: false,
-        message: error.message,
-      });
+      next(error)
     }
   }
-}
 
-export default new AIController();
+
